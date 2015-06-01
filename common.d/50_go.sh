@@ -1,4 +1,7 @@
-# GOPATH
+# GOPATH support
+#
+# export GOPATH to enable
+#
 if test -n "$GOPATH" -a -d "$GOPATH"; then
   export SHELL_CONFIG_MODS="$SHELL_CONFIG_MODS GOPATH"
 

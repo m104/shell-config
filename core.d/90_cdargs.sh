@@ -1,3 +1,7 @@
+# User cv/cdargs support
+#
+# must have cdargs in PATH to enable
+#
 if which -s cdargs; then
   export SHELL_CONFIG_MODS="$SHELL_CONFIG_MODS cv"
   function cv () {

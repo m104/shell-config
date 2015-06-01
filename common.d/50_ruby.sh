@@ -1,4 +1,9 @@
-# rbenv or RVM as a fallback
+# Ruby support
+#
+# rbenv: must have ~/.rbenv directory
+#   - or -
+# RVM: must have ~/.rvm directory
+#
 if test -d "$HOME/.rbenv"; then
   export SHELL_CONFIG_TOOLS="$SHELL_CONFIG_TOOLS rbenv"
   export PATH="$HOME/.rbenv/bin:$PATH"
