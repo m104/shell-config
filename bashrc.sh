@@ -17,11 +17,16 @@ fi
 # shell prompt with git status magic
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$GIT_PROMPT\$ "
 
-# don't put duplicate lines in the history. See bash(1) for more options
-export HISTCONTROL=ignoredups
-
 # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# history config
+export HISTSIZE=1000
+export HISTFILESIZE=2000
+# don't put duplicate lines in the history. See bash(1) for more options
+export HISTCONTROL=ignoredups
+# append history, don't overwrite
+shopt -s histappend
 
 # case-insensitive completion
 bind 'set completion-ignore-case on'
@@ -42,5 +47,10 @@ alias grep='grep --color=auto'
 
 # development aliases
 alias be='bundle exec'
+
+if test -f "~/.bash_aliases"; then
+  export SHELL_CONFIG_MODS="$SHELL_CONFIG_MODS aliases"
+  source ~/.bash_aliases
+fi
 
 unset SHELL_CONFIG_BASEDIR
