@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby -w
+
+if ARGV.size < 3
+  puts "Usage:"
+  puts "  rename PATTERN REPLACEMENT FILE [FILE2 ...]"
+  puts ""
+  puts "PATTERN is a ruby regex pattern or literal"
+  puts ""
+  exit 1
+end
+
+pattern = ARGV.shift
+replacement = ARGV.shift
+files = ARGV
+
+files.each do |file|
+  filename = File.basename(file).dup
+  dirname = File.dirname(file)
+  filename.gsub!(pattern, replacement)
+  File.rename(file, "#{dirname}/#{filename}")
+end

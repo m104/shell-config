@@ -1,0 +1,71 @@
+#!/usr/bin/env ruby
+#
+
+# timer continuation function
+def make_timer
+  start_time = Time.now.to_f
+  lambda { Time.now.to_f - start_time }
+end
+
+def duration(string)
+  begin
+    if string =~ /:/
+      parts = string.split(':')
+      parts.map!{|s| s.to_f.round(2)}
+      seconds = parts.pop.to_f.round(2)
+      seconds += 60.0 * parts.pop.to_f.round(2)
+      seconds += 60.0 * parts.pop.to_f.round(2) if parts.size > 0
+      seconds
+    else
+      string.to_f.round(2)
+    end
+  rescue
+    0
+  end
+end
+
+if ARGV[0]
+  total_time = duration(ARGV[0])
+  direction = :down
+  puts "Counting down from #{total_time} seconds..."
+else
+  direction = :up
+  puts "Couting up..."
+end
+
+
+timer = make_timer
+
+begin
+  sleep 0.01
+
+  elapsed = timer.call.round(2)
+
+  if direction == :up
+    reporting = elapsed
+  else
+    reporting = total_time - elapsed
+  end
+
+  seconds = reporting.truncate
+  subseconds = ((reporting - seconds.to_f) * 100.0).truncate
+  minutes = 0
+  hours   = 0
+
+  if seconds >= 60
+    minutes = (seconds / 60).truncate
+    seconds %= 60
+  end
+
+  if minutes >= 60
+    hours = (minutes / 60).truncate
+    minutes %= 60
+  end
+
+  print "\r%02d:%02d:%02d.%02d (%0.2fs)" %
+    [hours, minutes, seconds, subseconds, reporting]
+end while direction == :up or elapsed < total_time
+
+puts ""
+puts "Done!"
+
