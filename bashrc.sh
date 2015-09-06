@@ -1,15 +1,18 @@
 SHELL_CONFIG_BASEDIR="$HOME/.shell"
 
-# ensure each prompt starts on a new line
-export PROMPT_COMMAND='printf %b%${COLUMNS}b%b "\033[0;7m%\033[0m" "\r" "\e[K"'
+if test "`type -t __git_ps1`" = "function"; then
+  # ensure each prompt starts on a new line
+  export PROMPT_COMMAND='printf %b%${COLUMNS}b%b "\033[0;7m%\033[0m" "\r" "\e[K"'
 
-# initialize git prompt
-#export GIT_PS1_SHOWSTASHSTATE=1
-#export GIT_PS1_SHOWDIRTYSTATE=1
-#export GIT_PS1_SHOWUNTRACKEDFILES=1
-#export GIT_PS1_SHOWUPSTREAM='auto'
-source "$SHELL_CONFIG_BASEDIR/bin/git-prompt.sh"
-GIT_PROMPT='\[\033[1;33m\]$(__git_ps1 "~%s")\[\033[00m\]'
+  # extra git prompt options
+  #export GIT_PS1_SHOWSTASHSTATE=1
+  #export GIT_PS1_SHOWDIRTYSTATE=1
+  #export GIT_PS1_SHOWUNTRACKEDFILES=1
+  #export GIT_PS1_SHOWUPSTREAM='auto'
+
+  # initialize git prompt
+  GIT_PROMPT='\[\033[1;33m\]$(__git_ps1 "~%s")\[\033[00m\]'
+fi
 
 # shell prompt with git status magic
 export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$GIT_PROMPT\$ "
