@@ -48,7 +48,7 @@ alias grep='grep --color=auto'
 # development aliases
 alias be='bundle exec'
 
-if test -f "~/.bash_aliases"; then
+if test -f ~/.bash_aliases; then
   export SHELL_CONFIG_MODS="$SHELL_CONFIG_MODS aliases"
   source ~/.bash_aliases
 fi
