@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# This shell script passes all its arguments to the binary inside the
+# Emacs.app application bundle.
+#
+# Set EMACS_APP_DIR environment variable to specify the Emacs.app directory
+# explicitly.
+
+if [ -z "$EMACS_APP_DIR" ]
+then
+	myDir="`dirname "$0"`"
+	myAppDir="$myDir/../Applications"
+	suspects=(
+		/Applications
+		~/Applications
+		/Applications/emacs
+		~/Applications/emacs
+		$myDir
+		$myDir/emacs
+		$myAppDir
+		$myAppDir/emacs
+		/Applications/Utilities
+		/Applications/Utilities/emacs
+	)
+	for i in ${suspects[@]}; do
+		if [ -x "$i/Emacs.app" ]; then
+			EMACS_APP_DIR="$i"
+			break
+		fi
+	done
+fi
+if [ -z "$EMACS_APP_DIR" ]
+then
+	echo "Sorry, cannot find Emacs.app.  Try setting the EMACS_APP_DIR environment variable to the directory containing Emacs.app."
+	exit 1
+fi
+binary="$EMACS_APP_DIR/Emacs.app/Contents/MacOS/Emacs"
+
+exec "$binary" ${1:+"$@"} &
