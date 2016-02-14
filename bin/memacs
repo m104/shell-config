@@ -36,4 +36,4 @@ then
 fi
 binary="$EMACS_APP_DIR/Emacs.app/Contents/MacOS/Emacs"
 
-exec "$binary" ${1:+"$@"} &
+exec "$binary" $@
