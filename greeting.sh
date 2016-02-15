@@ -15,6 +15,12 @@ echo -n "tools:"
 settermcolor 01 33
 echo "$SHELL_CONFIG_TOOLS"
 
+settermcolor 00 00
+echo -n "env:"
+
+settermcolor 01 35
+echo "$SHELL_CONFIG_ENV"
+
 # fun fortune
 echo ""
 settermcolor 01 34
