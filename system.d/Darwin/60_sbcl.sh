@@ -1,4 +1,4 @@
-slimvpath="$HOME/.vim/bundle/slimv.vim/slime"
+slimvpath="$HOME/.vim/bundle/slimv/slime"
 if test -d "$slimvpath" && which -s sbcl; then
   export SHELL_CONFIG_TOOLS="$SHELL_CONFIG_TOOLS swank_sbcl"
   export SLIMV_PATH="$slimvpath"
