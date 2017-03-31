@@ -7,6 +7,7 @@
 if test -d "$HOME/.rbenv"; then
   export SHELL_CONFIG_TOOLS="$SHELL_CONFIG_TOOLS rbenv"
   export PATH="$HOME/.rbenv/bin:$PATH"
+  export SHELL_CONFIG_ENV="$SHELL_CONFIG_ENV .rbenv/bin"
   eval "$(rbenv init -)"
 elif test -r "$HOME/.rvm/scripts/rvm"; then
   export SHELL_CONFIG_TOOLS="$SHELL_CONFIG_TOOLS rvm"

@@ -1,7 +1,7 @@
 # shell-config bin PATH support
 corebinpath="$SHELL_CONFIG_BASEDIR/bin"
 if test -d "$corebinpath"; then
-  export SHELL_CONFIG_MODS="$SHELL_CONFIG_MODS core-bin"
+  export SHELL_CONFIG_ENV="$SHELL_CONFIG_ENV .shell/bin"
   export PATH="$corebinpath:$PATH"
 fi
 unset corebinpath
@@ -12,7 +12,7 @@ unset corebinpath
 #
 binpath="$HOME/bin"
 if test -d "$binpath"; then
-  export SHELL_CONFIG_MODS="$SHELL_CONFIG_MODS home-bin"
+  export SHELL_CONFIG_ENV="$SHELL_CONFIG_ENV bin"
   export PATH="$binpath:$PATH"
 fi
 unset binpath

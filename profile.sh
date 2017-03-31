@@ -7,6 +7,7 @@ export SHELL_CONFIG_DEBUG=false
 # initialize these
 export SHELL_CONFIG_MODS=""
 export SHELL_CONFIG_TOOLS=""
+export SHELL_CONFIG_ENV=""
 
 function shell_env_debug {
   $SHELL_CONFIG_DEBUG && echo "[sh-env-dbg] $1"
