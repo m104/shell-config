@@ -15,7 +15,7 @@ if test "`type -t __git_ps1`" = "function"; then
 fi
 
 # shell prompt with git status magic
-export PS1="\[\033[01;33m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$GIT_PROMPT\$ "
+export PS1="\[\033[01;30m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]$GIT_PROMPT\$ "
 
 # check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 shopt -s checkwinsize
