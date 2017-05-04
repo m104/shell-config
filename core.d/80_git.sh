@@ -47,4 +47,27 @@ if which -s git; then
     echo -e "${GREEN}All clean :)${CLEAR}"
     echo ""
   }
+
+  export SHELL_CONFIG_TOOLS="$SHELL_CONFIG_TOOLS git-sync-upstream"
+
+  function git-sync-upstream {
+    YELLOW='\033[1;33m'
+    GREEN='\033[1;32m'
+    CLEAR='\033[00m'
+
+
+    echo -e "${YELLOW}Fetching latest upstream${CLEAR}"
+    git fetch upstream
+
+    echo -e "${YELLOW}Resetting master${CLEAR}"
+    git checkout master > /dev/null
+    git reset --hard upstream/master
+
+    echo -e "${YELLOW}Pushing synced master${CLEAR}"
+    git push -f origin master
+
+    echo ""
+    echo -e "${GREEN}All synced :)${CLEAR}"
+    echo ""
+  }
 fi
