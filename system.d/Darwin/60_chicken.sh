@@ -3,7 +3,7 @@ which -s brew || return
 
 chicken_prefix_path=`brew --prefix chicken 2> /dev/null`
 if test -d "$chicken_prefix_path" && which -s csi; then
-  export SHELL_CONFIG_MODS="$SHELL_CONFIG_TOOLS chicken"
+  export SHELL_CONFIG_ENV="$SHELL_CONFIG_ENV chicken"
   binpath="$chicken_prefix_path/bin"
   export PATH="$PATH:$binpath"
   unset binpath
