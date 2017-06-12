@@ -12,7 +12,7 @@ unset corebinpath
 #
 binpath="$HOME/bin"
 if test -d "$binpath"; then
-  export SHELL_CONFIG_ENV="$SHELL_CONFIG_ENV bin"
+  export SHELL_CONFIG_ENV="$SHELL_CONFIG_ENV ~/bin"
   export PATH="$binpath:$PATH"
 fi
 unset binpath
