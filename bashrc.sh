@@ -1,8 +1,12 @@
 SHELL_CONFIG_BASEDIR="$HOME/.shell"
 
+# ensure each prompt starts on a new line
+function reset_for_new_prompt() {
+  printf "%b%${COLUMNS}b%b" "\033[0;7m%\033[0m" "\r" "\e[K"
+}
+export PROMPT_COMMAND="reset_for_new_prompt${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+
 if test "`type -t __git_ps1`" = "function"; then
-  # ensure each prompt starts on a new line
-  export PROMPT_COMMAND='printf %b%${COLUMNS}b%b "\033[0;7m%\033[0m" "\r" "\e[K"'
 
   # extra git prompt options
   #export GIT_PS1_SHOWSTASHSTATE=1
