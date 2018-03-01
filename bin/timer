@@ -62,7 +62,7 @@ begin
     minutes %= 60
   end
 
-  print "\r%02d:%02d:%02d.%02d (%0.2fs)" %
+  print "    \r%02d:%02d:%02d.%02d (%0.2fs)" %
     [hours, minutes, seconds, subseconds, reporting]
 end while direction == :up or elapsed < total_time
 
