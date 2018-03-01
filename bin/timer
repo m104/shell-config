@@ -10,11 +10,14 @@ end
 def duration(string)
   begin
     if string =~ /:/
-      parts = string.split(':')
-      parts.map!{|s| s.to_f.round(2)}
-      seconds = parts.pop.to_f.round(2)
-      seconds += 60.0 * parts.pop.to_f.round(2)
-      seconds += 60.0 * parts.pop.to_f.round(2) if parts.size > 0
+      parts = string.split(':').map{|s| s.to_f.round(2)}.reverse
+      factors = [1, 60, 60 * 60, 60 * 60 * 24]
+      seconds = 0
+
+      while parts.size > 0 && factors.size > 0
+        seconds += parts.shift * factors.shift
+      end
+
       seconds
     else
       string.to_f.round(2)
