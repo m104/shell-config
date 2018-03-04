@@ -1,5 +1,4 @@
-#!/usr/bin/env ruby
-#
+#!/usr/bin/env ruby -w
 
 # timer continuation function
 def make_timer
@@ -71,4 +70,3 @@ end while direction == :up or elapsed < total_time
 
 puts ""
 puts "Done!"
-
