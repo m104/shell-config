@@ -24,7 +24,7 @@ replacement = ARGV.shift
 ARGV.each do |file|
   filename = File.basename(file)
   dirname = File.dirname(file)
-  newname = filename.gsub(pattern, replacement)
+  newname = filename.gsub(Regexp.new(pattern), replacement)
 
   next if newname == filename
 
