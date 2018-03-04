@@ -1,21 +1,36 @@
 #!/usr/bin/env ruby -w
 
-if ARGV.size < 3
+if ARGV.size < 3 || ['-h', '--help'].include?(ARGV[0])
   puts "Usage:"
-  puts "  rename PATTERN REPLACEMENT FILE [FILE2 ...]"
+  puts "  rename [-n] PATTERN REPLACEMENT FILE [FILE2 ...]"
   puts ""
-  puts "PATTERN is a ruby regex pattern or literal"
+  puts "-n:           no actual renaming will be performed"
+  puts "PATTERN:      Ruby regex pattern or literal string"
+  puts "REPLACEMENT:  Ruby regex replacement or literal string"
   puts ""
   exit 1
 end
 
+do_rename = true
+if ARGV[0] == '-n'
+  ARGV.shift
+  do_rename = false
+  STDERR.puts "replace: no renaming will be performed"
+end
+
 pattern = ARGV.shift
 replacement = ARGV.shift
-files = ARGV
 
-files.each do |file|
-  filename = File.basename(file).dup
+ARGV.each do |file|
+  filename = File.basename(file)
   dirname = File.dirname(file)
-  filename.gsub!(pattern, replacement)
-  File.rename(file, "#{dirname}/#{filename}")
+  newname = filename.gsub(pattern, replacement)
+
+  next if newname == filename
+
+  puts "#{dirname}/#{filename} -> #{newname}"
+
+  if do_rename
+    File.rename(file, "#{dirname}/#{newname}")
+  end
 end
