@@ -1,3 +1,3 @@
 function cv
-    cdargs $argv && cd (cat "$HOME/.cdargsresult")
+    cdargs $argv; and cd (cat "$HOME/.cdargsresult")
 end
