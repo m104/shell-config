@@ -1,3 +1,3 @@
 function cp
-cp -i $argv
+    /bin/cp -i $argv
 end
