@@ -1,6 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR LSCOLORS:ExGxBxFxCxdxDxHbHbacad
+SETUVAR --export EDITOR:vim
+SETUVAR --export GREP_COLOR:30\x3b42
+SETUVAR --export LSCOLORS:exGxBxFxCxdxDxHbHbacad
 SETUVAR __fish_fortune_color:FA7
 SETUVAR __fish_git_prompt_char_cleanstate:\u2714
 SETUVAR __fish_git_prompt_char_dirtystate:\u271a
