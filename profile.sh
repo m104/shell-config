@@ -49,3 +49,5 @@ shell_env_debug "Done"
 
 unset SHELL_CONFIG_BASEDIR
 unset SHELL_CONFIG_DEBUG
+
+export PATH="$HOME/.cargo/bin:$PATH"
