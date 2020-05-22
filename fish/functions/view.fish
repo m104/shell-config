@@ -1,3 +1,3 @@
-function nview
+function view
     nvim -R $argv
 end
