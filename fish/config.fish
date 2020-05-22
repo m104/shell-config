@@ -6,7 +6,6 @@ set -l load_dirs \
     2_system/(uname -s) \
     3_common
 
-
 for dir in $load_dirs
     for script in $__fish_config_dir/$dir/*.fish
         if test -r $script
